@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   //loginForm! -значение не проинициализировано(!-чтобы заткнуть компилятор)
   loginForm!: FormGroup;
 
+
   constructor(
     private router: Router,
     private authService: AuthService) {
@@ -23,8 +24,8 @@ export class LoginComponent implements OnInit {
   //Отправка формы
   submitLogin() {
     this.authService.login(this.loginForm.value).subscribe({
-      next: () => this.router.navigate(['admin']),
-      error: (err) => alert(err.message)
+      next: () => this.router.navigate(['admin']),/* admin - название страницы, куда будет редирект при авторизации*/
+      error: (err) => alert(err.message)/* если что-то пойдет не так, то выведется ошибка*/
     });
   }
 
@@ -40,6 +41,8 @@ export class LoginComponent implements OnInit {
           Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
         ])
     });
+
+    /*Если токен возвращен, тогда переходим на страницу  admin*/
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['admin'])
     }

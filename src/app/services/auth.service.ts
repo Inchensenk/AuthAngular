@@ -11,14 +11,18 @@ export class AuthService {
   }
 
   //Фейковая авторизация через localStorage
+
+  //Создание токена с данными по авторизации
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
 
+  //получение токена с данными по авторизации
   getToken() {
     return localStorage.getItem('token');
   }
 
+  //Проверка залогинен пользоватеь или нет
   isLoggedIn() {
     return this.getToken() !== null;
   }

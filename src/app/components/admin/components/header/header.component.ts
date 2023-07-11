@@ -20,9 +20,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hideLoader = this.router.events.pipe(filter((e) => e instanceof ResolveEnd), mapTo(false));
+    this.hideLoader = this.router.events.pipe(filter((event) => event instanceof ResolveEnd), mapTo(false));
 
-    this.showLoader = this.router.events.pipe(filter((e) => e instanceof ResolveStart), mapTo(true));
+    this.showLoader = this.router.events.pipe(filter((event) => event instanceof ResolveStart), mapTo(true));
 
     this.isLoading = merge(this.hideLoader, this.showLoader);
   }

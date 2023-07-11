@@ -6,13 +6,16 @@ import {User} from '../user';
   providedIn: 'root'
 })
 export class AdminService {
+
   constructor(private http: HttpClient) {
   }
 
+  //Общий список пользователей
   getPersonalList(){
-    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users?_start=0&_limit=5');
+    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users?_start=0&_limit=3');
   }
 
+  //Конкретная персона
   getPerson(id: number) {
     return this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`);
   }

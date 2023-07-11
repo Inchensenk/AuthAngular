@@ -10,6 +10,7 @@ import {UsersResolver} from './resolvers/users.resolver';
 const routes: Routes = [
   {
     path: '', component: AdminDashboardComponent,
+    /*дети админки */
     children: [
       {path: 'contacts', component: ContactsComponent, resolve: {
         users: UsersResolver

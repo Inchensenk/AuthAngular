@@ -11,6 +11,7 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [AuthGuard],
     canDeactivate: [AuthGuard],
+    /*Когда мы получим доступ в админку, модуль будет загружен */
     loadChildren: () => import('./components/admin/admin.module').then((m) => m.AdminModule)
   },
   {path: '**', component: NotFoundComponent},/*  **-когда компонент не найден */
